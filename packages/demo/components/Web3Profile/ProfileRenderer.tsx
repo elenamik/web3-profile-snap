@@ -36,9 +36,11 @@ export const ProfileRenderer: React.FC<{ handleEdit: () => void }> = ({
     );
   }
   return (
-    <div className="flex flex-col">
-      {/*<img className="h-64 object-scale-down" src={profile} />*/}
-      {JSON.stringify(profile)}
+    <div className="flex flex-col text-center">
+      <img className="h-64 object-scale-down" src={profile.avatarUrl} />
+      <div>Screen Name: {profile.screenName}</div>
+      <div>Bio: {profile.bio}</div>
+
       <div className="grid">
         <button className="justify-self-end">
           <Edit fontSize="20px" onClick={handleEdit} />

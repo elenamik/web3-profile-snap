@@ -17,7 +17,6 @@ export async function isSnapInstalled(
   snapOrigin: string,
   version?: string
 ): Promise<boolean> {
-  console.log("all wallet snaps", await getWalletSnaps());
   try {
     return !!Object.values(await getWalletSnaps()).find(
       (permission) =>

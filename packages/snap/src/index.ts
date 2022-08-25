@@ -54,7 +54,7 @@ module.exports.onRpcRequest = async ({ request }: {
               address, avatarUrl, screenName, bio
             }
           }
-          //await saveState(newState)
+          await saveState(newState)
           return {
             newState,
             request,
