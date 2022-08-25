@@ -60,7 +60,7 @@ module.exports.onRpcRequest = async ({ request }: {
           }
 
     case 'get_profile':
-      return {profile: state.profile}
+      return { profile: state.profile}
 
 
     case 'clear_profile':

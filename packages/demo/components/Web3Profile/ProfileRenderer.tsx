@@ -4,7 +4,7 @@ import { Loading } from "@web3uikit/core";
 import { Edit } from "@web3uikit/icons";
 import { snapId } from "./index";
 
-export const AvatarRenderer: React.FC<{ handleEdit: () => void }> = ({
+export const ProfileRenderer: React.FC<{ handleEdit: () => void }> = ({
   handleEdit,
 }) => {
   const { data: profile, isLoading } = useQuery({
@@ -18,6 +18,7 @@ export const AvatarRenderer: React.FC<{ handleEdit: () => void }> = ({
           },
         ],
       });
+      console.log("queried prof", profile);
       return profile;
     },
   });

@@ -1,12 +1,12 @@
 import * as React from "react";
 import { IPFSHTTPClient } from "ipfs-http-client";
 import { AddResult } from "ipfs-core-types/dist/src/root";
-import { CrossCircle, Edit } from "@web3uikit/icons";
+import { CrossCircle } from "@web3uikit/icons";
 import { snapId } from ".";
 import { useIpfs } from "../../utils/ipfs";
 import { Loading } from "@web3uikit/core";
 
-const Uploader: React.FC<{ onClose: () => void }> = ({ onClose }) => {
+const EditProfile: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [loading, setLoading] = React.useState(false);
 
   const { ipfs } = useIpfs();
@@ -54,13 +54,21 @@ const Uploader: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       <p className="text-lg font-semibold">Upload File using IPFS</p>
       {ipfs ? (
         <form onSubmit={handleIPFSSubmit} className="flex flex-col pt-6">
+          <label htmlFor="screenName">Screen Name: </label>
+          <input
+            name="screenName"
+            type="text"
+            className="bg-gray-100 text-sm "
+          />
+          <label htmlFor="bio">Bio: </label>
+          <input name="bio" type="textarea" className="bg-gray-100 text-sm " />
+          <label htmlFor="bio">Profile Avatar (Uploaded to IPFS):</label>
           <input name="file" type="file" className="text-sm" />
-
           <button
             type="submit"
             className="mt-4 w-fit rounded-2xl border-2 border-teal-900 bg-teal-100 p-2 font-semibold text-teal-900"
           >
-            Upload File
+            Update Profile
           </button>
         </form>
       ) : (
@@ -76,4 +84,4 @@ const Uploader: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   );
 };
 
-export default Uploader;
+export default EditProfile;

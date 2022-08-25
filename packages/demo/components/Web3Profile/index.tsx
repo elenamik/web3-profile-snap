@@ -1,8 +1,8 @@
 import * as React from "react";
 import { isSnapInstalled } from "./utils";
 import { QueryClientProvider, QueryClient } from "react-query";
-import Uploader from "./Uploader";
-import { AvatarRenderer } from "./AvatarRenderer";
+import EditProfile from "./EditProfile";
+import { ProfileRenderer } from "./ProfileRenderer";
 
 /***
  * Initial Setup for Rendering Details of Snap
@@ -71,10 +71,10 @@ const Web3Profile: React.FC = () => {
       </div>
     );
   } else if (mode === "EDIT") {
-    return <Uploader onClose={() => setMode("VIEW")} />;
+    return <EditProfile onClose={() => setMode("VIEW")} />;
   }
   return (
-    <AvatarRenderer
+    <ProfileRenderer
       handleEdit={() => {
         setMode("EDIT");
       }}

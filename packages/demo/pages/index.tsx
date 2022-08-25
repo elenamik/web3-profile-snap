@@ -2,8 +2,18 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import * as React from "react";
 import Web3Profile from "../components/Web3Profile";
+import { useWeb3React } from "@web3-react/core";
+import { InjectedConnector } from "@web3-react/injected-connector";
+import { Web3Provider } from "@ethersproject/providers";
 
 const Home: NextPage = () => {
+  const injectedConnector = new InjectedConnector({ supportedChainIds: [1] });
+  const { account, activate } = useWeb3React<Web3Provider>();
+  console.log("ACCT", account);
+  const handleConnect = () => {
+    activate(injectedConnector);
+  };
+
   return (
     <div className="flex w-full flex-col items-center p-2">
       <Head>
@@ -16,6 +26,7 @@ const Home: NextPage = () => {
           Welcome to the Web3 Profile Snap Demo!
         </h1>
 
+        <button onClick={handleConnect}>Connect Wallet</button>
         <p className="pt-2">
           Get started by enabling the snap, if you have not done so already.
           <br />
