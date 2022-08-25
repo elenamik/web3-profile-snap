@@ -3,6 +3,8 @@ import { isSnapInstalled } from "./utils";
 import { QueryClientProvider, QueryClient } from "react-query";
 import EditProfile from "./EditProfile";
 import { ProfileRenderer } from "./ProfileRenderer";
+import { useWeb3React } from "@web3-react/core";
+import { Web3Provider } from "@ethersproject/providers";
 
 /***
  * Initial Setup for Rendering Details of Snap

@@ -49,11 +49,12 @@ module.exports.onRpcRequest = async ({ request }: {
           const { avatarUrl, screenName, address, bio } = request.params;
           // TODO: get ENS for address
           const newState: SnapState = {
+            ...state,
             profile: {
               address, avatarUrl, screenName, bio
             }
           }
-          await saveState(newState)
+          //await saveState(newState)
           return {
             newState,
             request,
