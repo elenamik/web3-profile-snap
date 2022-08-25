@@ -7,27 +7,37 @@ import { snapId } from "./index";
 export const AvatarRenderer: React.FC<{ handleEdit: () => void }> = ({
   handleEdit,
 }) => {
-  const { data: avatar, isLoading } = useQuery({
+  const { data: profile, isLoading } = useQuery({
     queryFn: async () => {
-      const { imageUrl } = await window.ethereum.request({
+      const { profile } = await window.ethereum.request({
         method: "wallet_invokeSnap",
         params: [
           snapId,
           {
-            method: "get_avatar",
+            method: "get_profile",
           },
         ],
       });
-      return imageUrl;
+      return profile;
     },
   });
 
   if (isLoading) {
     return <Loading spinnerColor="black" text="Loading avatar" />;
   }
+  if (!profile) {
+    return (
+      <div>
+        <span>No profile defined yet</span>
+        <br />
+        <button onClick={handleEdit}>Click here to create a profile</button>
+      </div>
+    );
+  }
   return (
     <div className="flex flex-col">
-      <img className="h-64 object-scale-down" src={avatar} />
+      {/*<img className="h-64 object-scale-down" src={profile} />*/}
+      {JSON.stringify(profile)}
       <div className="grid">
         <button className="justify-self-end">
           <Edit fontSize="20px" onClick={handleEdit} />

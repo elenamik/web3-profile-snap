@@ -1,5 +1,5 @@
 {
-  "name": "@mikleens-avatar-snap/next-app-usage",
+  "name": "@web3-profile-snap/demo",
   "version": "0.1.0",
   "scripts": {
     "dev": "next dev",

@@ -1,8 +1,8 @@
 {
-  "name": "mikleens-avatar-snap",
+  "name": "web3-profile-snap",
   "version": "1.0.0",
   "description": "MetaMask snap + React component that attaches an avatar photo to your wallet",
-  "repository": "https://github.com/elenamik/mikleens-avatar-snap.git",
+  "repository": "https://github.com/elenamik/web3-profile-snap.git",
   "author": "Lena Mikhaylova <44687983+elenamik@users.noreply.github.com>",
   "license": "MIT",
   "private": true,
@@ -16,5 +16,11 @@
     "eslint": "7",
     "ts-node": "^10.8.0",
     "typescript": "4.6.4"
+  },
+  "scripts": {
+    "w:snap": "yarn workspace @web3-profile-snap/snap",
+    "w:demo": "yarn workspace @web3-profile-snap/demo",
+    "snap-dev": "cd packages/snap && mm-snap watch",
+    "demo-start": "yarn w:demo dev"
   }
 }

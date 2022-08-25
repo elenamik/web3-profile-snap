@@ -4,15 +4,15 @@
   "proposedName": "Avatar Snap",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elenamik/mikleens-avatar-snap"
+    "url": "https://github.com/elenamik/web3-profile-snap"
   },
   "source": {
-    "shasum": "eUy2XDjoCQfzVOtlyWW61ATRgrFhezDP+WflggaF+w4=",
+    "shasum": "wJzBXmbUFaC6Y0nmWM2dyfhWOeA85Yb5Ir3NFWcWN58=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
         "iconPath": "images/icon.svg",
-        "packageName": "@mikleens-avatar-snap/avatar-snap",
+        "packageName": "@web3-profile-snap/snap",
         "registry": "https://registry.npmjs.org/"
       }
     }
