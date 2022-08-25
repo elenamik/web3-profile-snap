@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.json",
+  "declaration": true,
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "outDir": "./build",
+    "typeRoots": [
+      "./node_modules/@types",
+      "../../node_modules/@types",
+      "./@types"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "test/**/*ts"
+  ],
+  "files": ["../../node_modules/@metamask/snap-types/global.d.ts"],
+}
