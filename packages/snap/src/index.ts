@@ -55,10 +55,15 @@ module.exports.onRpcRequest = async ({ request }: {
           const { avatarUrl, screenName, address, bio } = request.params;
           // TODO: get ENS for address
           // const ens = await provider.lookupAddress(address) (request timing out)
+
           const newState: SnapState = {
             ...state,
             profile: {
-              address, avatarUrl, screenName, bio
+              ...state.profile,
+              ...address && {address},
+              ...bio && {bio},
+              ...avatarUrl && {avatarUrl},
+              ...screenName && {screenName},
             }
           }
           await saveState(newState)
