@@ -1,10 +1,10 @@
 {
-  "name": "@mikleens-avatar-snap/avatar-snap",
+  "name": "@web3-profile-snap/snap",
   "version": "0.19.0",
-  "description": "Snap which lets you save a profile photo to your wallet",
+  "description": "Snap which lets you save a profile inside your metamask wallet",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elenamik/mikleens-avatar-snap"
+    "url": "https://github.com/elenamik/web3-profile-snap"
   },
   "license": "MIT",
   "main": "src/index.ts",
@@ -46,5 +46,9 @@
   },
   "engines": {
     "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "@ensdomains/ensjs": "^3.0.0-alpha.13",
+    "ethers": "^5.7.0"
   }
 }

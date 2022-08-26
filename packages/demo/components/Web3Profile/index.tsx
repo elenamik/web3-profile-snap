@@ -1,8 +1,10 @@
 import * as React from "react";
 import { isSnapInstalled } from "./utils";
-import { QueryClientProvider, QueryClient } from "react-query";
-import Uploader from "./Uploader";
-import { AvatarRenderer } from "./AvatarRenderer";
+import { QueryClientProvider, QueryClient, useQuery } from "react-query";
+import EditProfile from "./EditProfile";
+import { ProfileRenderer } from "./ProfileRenderer";
+import { useWeb3React } from "@web3-react/core";
+import { Web3Provider } from "@ethersproject/providers";
 
 /***
  * Initial Setup for Rendering Details of Snap
@@ -24,7 +26,7 @@ if (snapId === "") {
  * End of setup
  */
 
-const AvatarSnap: React.FC = () => {
+const Web3Profile: React.FC = () => {
   const [mode, setMode] = React.useState<"VIEW" | "EDIT" | "UNINSTALLED">(
     "UNINSTALLED"
   );
@@ -60,21 +62,21 @@ const AvatarSnap: React.FC = () => {
   if (mode === "UNINSTALLED") {
     return (
       <div>
-        Not installed. Click here to install
+        Not installed.
         <button
           onClick={() => {
             installSnap(snapId);
           }}
         >
-          Install Snap
+          Click here to install snap
         </button>
       </div>
     );
   } else if (mode === "EDIT") {
-    return <Uploader onClose={() => setMode("VIEW")} />;
+    return <EditProfile onClose={() => setMode("VIEW")} />;
   }
   return (
-    <AvatarRenderer
+    <ProfileRenderer
       handleEdit={() => {
         setMode("EDIT");
       }}
@@ -87,7 +89,7 @@ export const Wrapped = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AvatarSnap />
+      <Web3Profile />
     </QueryClientProvider>
   );
 };
