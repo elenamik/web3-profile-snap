@@ -1,6 +1,6 @@
 import * as React from "react";
 import { isSnapInstalled } from "./utils";
-import { QueryClientProvider, QueryClient } from "react-query";
+import { QueryClientProvider, QueryClient, useQuery } from "react-query";
 import EditProfile from "./EditProfile";
 import { ProfileRenderer } from "./ProfileRenderer";
 import { useWeb3React } from "@web3-react/core";

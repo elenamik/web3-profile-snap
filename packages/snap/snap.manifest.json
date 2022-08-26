@@ -18,7 +18,9 @@
     }
   },
   "initialPermissions": {
-    "snap_manageState": {}
+    "snap_manageState": {},
+    "snap_confirm": {},
+    "endowment:network-access": {}
   },
   "manifestVersion": "0.1"
 }

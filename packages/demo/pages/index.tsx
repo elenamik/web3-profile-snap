@@ -12,7 +12,6 @@ const Home: NextPage = () => {
   const handleConnect = () => {
     activate(injectedConnector);
   };
-  console.log("acct", account);
 
   return (
     <div className="flex w-full flex-col items-center p-2">

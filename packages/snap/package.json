@@ -46,5 +46,9 @@
   },
   "engines": {
     "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "@ensdomains/ensjs": "^3.0.0-alpha.13",
+    "ethers": "^5.7.0"
   }
 }

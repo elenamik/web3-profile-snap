@@ -13,3 +13,11 @@ NEXT_PUBLIC_INFURA_API_KEY=<fill here>
 
 ```
 4. `yarn demo-start` to start nextjs web app
+
+
+## Resources:
+- IPFS: https://www.becomebetterprogrammer.com/upload-files-using-react-ipfs-infura/
+- ens: 
+  - https://github.com/ensdomains/ensjs
+  - https://docs.ens.domains/dapp-developer-guide/resolving-names#reverse-resolution
+- web3react: https://dev.to/yakult/how-to-use-web3-react-to-develop-dapp-1cgn

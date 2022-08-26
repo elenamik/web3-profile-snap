@@ -1,4 +1,7 @@
 import { JsonRpcId, JsonRpcVersion } from "@metamask/types";
+// TODO: can connect to a provider?
+// const provider = new ethers.providers.JsonRpcProvider('https://mainnet.infura.io/v3/<project_id>')
+
 export interface JsonRpcRequest<T, M> {
   jsonrpc: JsonRpcVersion;
   method: M,
@@ -48,6 +51,7 @@ module.exports.onRpcRequest = async ({ request }: {
     case 'update_profile':
           const { avatarUrl, screenName, address, bio } = request.params;
           // TODO: get ENS for address
+          // const ens = await provider.lookupAddress(address)
           const newState: SnapState = {
             ...state,
             profile: {

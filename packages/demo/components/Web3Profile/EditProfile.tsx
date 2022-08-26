@@ -58,9 +58,7 @@ const EditProfile: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     const file = files[0];
     const uploadResult: AddResult = await uploadToIpfs(file);
     const imageUrl = `https://ipfs.infura.io/ipfs/${uploadResult.path}`;
-    console.log("image url", imageUrl);
     const result = await updateProfile({ imageUrl, screenName, bio });
-    console.log("UPLOAD REUSLT", result);
     onClose();
   };
 
