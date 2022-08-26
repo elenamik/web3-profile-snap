@@ -1,5 +1,7 @@
 # web3-profile-snap
-MetaMask snap + React component that attaches an avatar photo to your wallet 
+MetaMask snap + React component that attaches a user profile to your wallet. It maintains a photo, screen name, bio, and your wallet address.
+
+Next steps would be to look up ENS.
 
 
 ## Getting set up
