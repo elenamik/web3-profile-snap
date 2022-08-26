@@ -8,6 +8,7 @@ import { Loading } from "@web3uikit/core";
 import { useWeb3React } from "@web3-react/core";
 import { Web3Provider } from "@ethersproject/providers";
 import { useForm } from "react-hook-form";
+import { Bin } from "@web3uikit/icons";
 
 type FormValues = {
   screenName: string;
@@ -44,6 +45,21 @@ const EditProfile: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     });
   };
 
+  const clearProfile = async () => {
+    const result: { cleared: boolean } = await window?.ethereum.request({
+      method: "wallet_invokeSnap",
+      params: [
+        snapId,
+        {
+          method: "clear_profile",
+        },
+      ],
+    });
+    if (result.cleared) {
+      onClose();
+    }
+  };
+
   const uploadToIpfs = async (file: File) => {
     return (ipfs as IPFSHTTPClient).add(file);
   };
@@ -58,7 +74,7 @@ const EditProfile: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     const file = files[0];
     const uploadResult: AddResult = await uploadToIpfs(file);
     const imageUrl = `https://ipfs.infura.io/ipfs/${uploadResult.path}`;
-    const result = await updateProfile({ imageUrl, screenName, bio });
+    await updateProfile({ imageUrl, screenName, bio });
     onClose();
   };
 
@@ -109,7 +125,8 @@ const EditProfile: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       )}
 
       <div className="grid">
-        <button className="justify-self-end">
+        <button className="flex justify-self-end">
+          <Bin onClick={clearProfile} fontSize="26px" />
           <CrossCircle fontSize="26px" onClick={onClose} />
         </button>
       </div>

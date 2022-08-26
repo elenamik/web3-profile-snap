@@ -3,20 +3,10 @@ import { useQuery } from "react-query";
 import { Loading } from "@web3uikit/core";
 import { Edit } from "@web3uikit/icons";
 import { snapId } from "./index";
-import { ethers } from "ethers";
-export const provider = new ethers.providers.JsonRpcProvider(
-  "https://mainnet.infura.io/v3/527dda19139543ecbcdbca38a6d78b79"
-);
+
 export const ProfileRenderer: React.FC<{ handleEdit: () => void }> = ({
   handleEdit,
 }) => {
-  const getENS = async () => {
-    const ens = await provider.lookupAddress(
-      "0x74503D89E994e5e6FE44Ba3BBD09e048F0185403"
-    );
-    console.log("ENS", ens);
-  };
-  getENS();
   const { data: profile, isLoading } = useQuery({
     queryFn: async () => {
       const { profile } = await window.ethereum.request({

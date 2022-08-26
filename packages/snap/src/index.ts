@@ -69,8 +69,24 @@ module.exports.onRpcRequest = async ({ request }: {
 
 
     case 'clear_profile':
-      // TODO: send a confirm first
-      return {profile: state.profile}
+      const result = await wallet.request({
+        method: 'snap_confirm',
+        params: [
+          {
+            prompt: 'Clear Profile?',
+            description: 'Are you sure you want to clear your profile?',
+            textAreaContent: 'This will not affect your keys or assets. This action will only erase your additional user data such as avatar, bio, username, etc.',
+          },
+        ],
+      });
+      if (result) {
+        delete state.profile
+        await saveState(state)
+        return {profile: state.profile, cleared:true, }
+      }
+      else {
+        return {profile: state.profile, cleared:false}
+      }
 
     default:
       throw new Error('Method not found.');
