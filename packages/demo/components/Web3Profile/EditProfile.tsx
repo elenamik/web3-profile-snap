@@ -24,9 +24,9 @@ const EditProfile: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const { ipfs } = useIpfs();
 
   const updateProfile = async (profile: {
-    imageUrl: string;
-    screenName: string;
-    bio: string;
+    imageUrl?: string;
+    screenName?: string;
+    bio?: string;
   }) => {
     if (!account) {
       return alert("Please connect wallet first");
@@ -87,13 +87,15 @@ const EditProfile: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const handleFormSubmit = async (formValues: FormValues) => {
     const { screenName, bio, files } = formValues;
 
-    if (!files || files.length === 0) {
-      return alert("No files selected");
-    }
     setLoading(true);
-    const file = files[0];
-    const uploadResult: AddResult = await uploadToIpfs(file);
-    const imageUrl = `https://ipfs.infura.io/ipfs/${uploadResult.path}`;
+
+    let imageUrl: string | undefined = undefined;
+    if (files && files.length > 0) {
+      const file = files[0];
+      const uploadResult: AddResult = await uploadToIpfs(file);
+      imageUrl = `https://ipfs.infura.io/ipfs/${uploadResult.path}`;
+    }
+
     await updateProfile({ imageUrl, screenName, bio });
     onClose();
   };
