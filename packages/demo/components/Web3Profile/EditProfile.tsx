@@ -23,12 +23,15 @@ const EditProfile: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
   const { ipfs } = useIpfs();
 
-  const updateProfile = (profile: {
+  const updateProfile = async (profile: {
     imageUrl: string;
     screenName: string;
     bio: string;
   }) => {
-    return window?.ethereum.request({
+    if (!account) {
+      return alert("Please connect wallet first");
+    }
+    const result = await window?.ethereum.request({
       method: "wallet_invokeSnap",
       params: [
         snapId,
@@ -43,10 +46,11 @@ const EditProfile: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         },
       ],
     });
+    console.log(result);
   };
 
   const clearProfile = async () => {
-    const result: { cleared: boolean } = await window?.ethereum.request({
+    const result: { success: boolean } = await window?.ethereum.request({
       method: "wallet_invokeSnap",
       params: [
         snapId,
@@ -55,7 +59,23 @@ const EditProfile: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         },
       ],
     });
-    if (result.cleared) {
+    if (result.success) {
+      onClose();
+    }
+  };
+
+  const randomizeAvatar = async () => {
+    setLoading(true);
+    const result: { success: boolean } = await window?.ethereum.request({
+      method: "wallet_invokeSnap",
+      params: [
+        snapId,
+        {
+          method: "randomize_avatar",
+        },
+      ],
+    });
+    if (result.success) {
       onClose();
     }
   };
@@ -85,8 +105,8 @@ const EditProfile: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   }
 
   return (
-    <div className="h-64 w-64">
-      <p className="text-lg font-semibold">Upload File using IPFS</p>
+    <div className="w-64">
+      <p className="text-lg font-semibold">Edit Profile</p>
       {ipfs ? (
         <form
           onSubmit={handleSubmit(handleFormSubmit)}
@@ -123,6 +143,13 @@ const EditProfile: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       ) : (
         <div>Could not connect to IPFS at this time</div>
       )}
+
+      <button
+        onClick={randomizeAvatar}
+        className="mt-4 w-fit rounded-2xl border-2 border-orange-700 bg-orange-100 p-2 font-semibold text-orange-700"
+      >
+        Randomize avatar
+      </button>
 
       <div className="grid">
         <button className="flex justify-self-end">

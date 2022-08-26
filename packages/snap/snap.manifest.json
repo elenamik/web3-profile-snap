@@ -7,7 +7,7 @@
     "url": "https://github.com/elenamik/web3-profile-snap"
   },
   "source": {
-    "shasum": "CgHcPrwkTEkXzqg7IfO1TqDrTHSeKOX1L8WNI32T4bI=",
+    "shasum": "aK23lgSAYdROUELZOv3D+TeqSjpgdLQh9o0jvLRu14M=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
@@ -19,7 +19,8 @@
   },
   "initialPermissions": {
     "snap_manageState": {},
-    "snap_confirm": {}
+    "snap_confirm": {},
+    "endowment:network-access": {}
   },
   "manifestVersion": "0.1"
 }

@@ -18,7 +18,6 @@ export const ProfileRenderer: React.FC<{ handleEdit: () => void }> = ({
           },
         ],
       });
-      console.log("queried prof", profile);
       return profile;
     },
   });
