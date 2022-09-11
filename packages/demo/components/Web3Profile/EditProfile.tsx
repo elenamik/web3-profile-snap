@@ -93,7 +93,7 @@ const EditProfile: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     if (files && files.length > 0) {
       const file = files[0];
       const uploadResult: AddResult = await uploadToIpfs(file);
-      imageUrl = `https://ipfs.infura.io/ipfs/${uploadResult.path}`;
+      imageUrl = `https://infura-ipfs.io/ipfs/${uploadResult.path}`;
     }
 
     await updateProfile({ imageUrl, screenName, bio });

@@ -8,7 +8,7 @@ export const useIpfs = () => {
   let ipfsConn: IPFSHTTPClient | undefined;
   try {
     ipfsConn = create({
-      url: "https://ipfs.infura.io:5001/api/v0",
+      url: "https://infura-ipfs.io:5001/api/v0",
       headers: {
         authorization,
       },
